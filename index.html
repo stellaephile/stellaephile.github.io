@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>stellaephile — Sonal Ganvir | GIS & Data Analyst</title>
+<meta name="description" content="Sonal Ganvir — GIS & Data Analyst specializing in urban transport, spatial intelligence, and Gen AI. Currently at WRI India.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+:root {
+  --void: #0F0E14;
+  --plum-deep: #1A1525;
+  --plum-mid: #2C2840;
+  --mauve: #6B6284;
+  --gold: #B8956A;
+  --gold-light: #D4B896;
+  --rose-dust: #C4A99C;
+  --linen: #F2EBE3;
+  --parchment: #E8DDD4;
+  --warm-white: #FAF7F4;
+  --text-dark: #1E1B26;
+  --text-mid: #4A4560;
+  --text-soft: #7A7590;
+  --indigo: #3D3554;
+  --sage: #7A8C7E;
+  --forest: #4A6741;
+  --burgundy: #4A1528;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--void);
+  color: var(--linen);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(15,14,20,0.95), transparent);
+  backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.nav-logo span {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--mauve);
+  margin-left: 6px;
+  letter-spacing: 0.1em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--linen);
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 0.25s;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--void);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61,53,84,0.35) 0%, transparent 70%);
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+.hero-wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.5rem, 14vw, 11rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 45%, rgba(184,149,106,0.35) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 28px;
+  user-select: none;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--linen);
+  margin-bottom: 8px;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-handle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  letter-spacing: 0.3em;
+  color: var(--mauve);
+  margin-bottom: 32px;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--linen);
+  opacity: 0.65;
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 13px 36px;
+  background: var(--gold);
+  color: var(--void);
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s;
+  border: 1px solid var(--gold);
+}
+
+.btn-primary:hover { background: transparent; color: var(--gold); }
+
+.btn-ghost {
+  padding: 13px 36px;
+  background: transparent;
+  color: var(--linen);
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+}
+
+.btn-resume {
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid rgba(184,149,106,0.4);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-resume:hover {
+  background: rgba(184,149,106,0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.35;
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { width: 40px; opacity: 0.4; }
+  50% { width: 60px; opacity: 0.8; }
+}
+
+.hero-scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── SECTIONS ── */
+.section-dark { background: var(--plum-deep); padding: 100px 48px; }
+.section-light { background: var(--warm-white); padding: 100px 48px; color: var(--text-dark); }
+.section-mid { background: var(--linen); padding: 100px 48px; color: var(--text-dark); }
+.container { max-width: 1000px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-dark .section-eyebrow { color: var(--gold); opacity: 0.7; }
+.section-light .section-eyebrow, .section-mid .section-eyebrow { color: var(--text-soft); }
+
+.section-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  max-width: 60px;
+  opacity: 0.3;
+}
+
+.section-dark .section-eyebrow::after { background: var(--gold); }
+.section-light .section-eyebrow::after, .section-mid .section-eyebrow::after { background: var(--text-soft); }
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 48px;
+}
+
+.section-dark .section-title { color: var(--linen); }
+.section-light .section-title, .section-mid .section-title { color: var(--text-dark); }
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-bio { font-size: 0.92rem; line-height: 1.9; color: var(--text-mid); }
+.about-bio p + p { margin-top: 16px; }
+.about-bio strong { color: var(--text-dark); font-weight: 500; }
+
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.stat-card {
+  background: var(--parchment);
+  border-radius: 12px;
+  padding: 24px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.stat-card:hover { border-left-color: var(--gold); }
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-number span { font-size: 1.2rem; color: var(--gold); }
+.stat-label { font-size: 0.72rem; color: var(--text-soft); letter-spacing: 0.05em; line-height: 1.4; }
+
+.skills-wrap { margin-top: 48px; }
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.skill-tag {
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+  transition: all 0.25s;
+}
+
+.skill-tag.geo { background: rgba(74,103,65,0.08); border-color: rgba(74,103,65,0.3); color: var(--forest); }
+.skill-tag.data { background: rgba(61,53,84,0.08); border-color: rgba(61,53,84,0.3); color: var(--indigo); }
+.skill-tag.ai { background: rgba(184,149,106,0.08); border-color: rgba(184,149,106,0.3); color: #8B6914; }
+.skill-tag:hover { transform: translateY(-2px); }
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--plum-mid);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(184,149,106,0.1);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.project-card:hover { transform: translateY(-6px); border-color: rgba(184,149,106,0.35); }
+
+/* ── VIDEO EMBED ── */
+.project-video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #0a0910;
+  overflow: hidden;
+}
+
+.project-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-placeholder.slides-placeholder .play-icon {
+  border-color: rgba(184,149,106,0.4);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+/* Google Slides embed — keeps 4:3 ratio */
+.project-slides {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  background: #0a0910;
+  overflow: hidden;
+}
+
+.project-slides iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.project-thumb { height: 160px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+.bhaasha-thumb { background: #000; height: 160px; }
+
+.project-thumb .thumb-icon { font-size: 2.5rem; opacity: 0.6; z-index: 1; }
+
+.thumb-bg { position: absolute; inset: 0; opacity: 0.4; }
+
+.video-placeholder {
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1A1525, #2C2840);
+  color: var(--mauve);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.video-placeholder .play-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(184,149,106,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+.project-body { padding: 22px; }
+
+.project-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--linen);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--linen);
+  opacity: 0.55;
+  margin-bottom: 16px;
+}
+
+.project-links { display: flex; gap: 12px; }
+
+.project-link {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-link:hover { opacity: 1; }
+
+.project-link.disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── WRITING ── */
+.articles-list { display: flex; flex-direction: column; gap: 0; }
+
+.article-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(74,69,96,0.2);
+  transition: background 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-item:first-child { border-top: 1px solid rgba(74,69,96,0.2); }
+.article-item:hover .article-title { color: var(--gold); }
+
+.article-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  opacity: 0.5;
+  min-width: 28px;
+}
+
+.article-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+
+.article-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  transition: color 0.25s;
+  line-height: 1.3;
+}
+
+.article-meta { font-size: 0.68rem; color: var(--text-soft); margin-top: 4px; }
+
+.article-arrow {
+  color: var(--text-soft);
+  opacity: 0.3;
+  font-size: 1.2rem;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.article-item:hover .article-arrow { opacity: 0.8; transform: translateX(4px); }
+
+.article-coming {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(74,69,96,0.1);
+  opacity: 0.35;
+}
+
+.coming-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-style: italic;
+}
+
+/* ── CONNECT ── */
+.connect-section {
+  background: linear-gradient(135deg, var(--void) 0%, var(--plum-deep) 50%, var(--burgundy) 100%);
+  padding: 120px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.connect-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,149,106,0.07) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.connect-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--linen);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.connect-sub {
+  font-size: 0.82rem;
+  color: var(--linen);
+  opacity: 0.5;
+  letter-spacing: 0.08em;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.connect-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.connect-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1px solid rgba(184,149,106,0.3);
+  border-radius: 2px;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.connect-link:hover { background: rgba(184,149,106,0.1); border-color: var(--gold); color: var(--gold); }
+
+.connect-link-resume {
+  border-color: rgba(184,149,106,0.55);
+  color: var(--gold);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--void);
+  padding: 36px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(184,149,106,0.1);
+}
+
+.footer-logo { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0.6; }
+.footer-copy { font-size: 0.65rem; color: var(--mauve); opacity: 0.4; letter-spacing: 0.05em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .section-dark, .section-light, .section-mid { padding: 70px 24px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .connect-section { padding: 80px 24px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">stellaephile <span>✦ sonal</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">GIS & Data Analyst · Urban Mobility · Gen AI</p>
+    <div class="hero-wordmark">stellaephile</div>
+    <h1 class="hero-name">Mapping the <em>unseen</em><br>patterns of the world.</h1>
+    <p class="hero-handle">✦ sonal ganvir</p>
+    <p class="hero-tagline">Spatial intelligence meets data depth. I turn complex geographies into insights that move cities forward.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#connect" class="btn-ghost">Get in Touch</a>
+      <a href="https://drive.google.com/file/d/1-zvCMXN_LfcfzSi_wrV2knEy4DBddGLM/view" target="_blank" rel="noopener" class="btn-resume">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Résumé
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-light" id="about">
+  <div class="container">
+    <p class="section-eyebrow">✦ About</p>
+    <h2 class="section-title">Data that knows<br><em>where it stands.</em></h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-bio">
+          <p>I'm a GIS Data Analyst specializing in <strong>urban transport and mobility</strong>, currently at WRI India. I work at the intersection of spatial data, AI, and city systems — building tools that help decision-makers see what maps alone can't tell.</p>
+          <p>My background spans a <strong>BTech in Computer Science</strong> from IIIT Nagpur and a <strong>Master's in Data Analytics</strong> from the University of Houston, with hands-on experience in GIS platforms, cloud infrastructure, and generative AI applications.</p>
+          <p>I build on <strong>GCP and AWS</strong>, compete in Gen AI hackathons, and take on freelance GIS projects that push the boundaries of spatial analysis.</p>
+        </div>
+        <div class="skills-wrap">
+          <p class="section-eyebrow" style="margin-bottom:16px;">✦ Skills</p>
+          <div class="skills-grid">
+            <span class="skill-tag geo">QGIS</span>
+            <span class="skill-tag geo">ArcGIS</span>
+            <span class="skill-tag geo">OpenStreetMap</span>
+            <span class="skill-tag geo">GTFS</span>
+            <span class="skill-tag geo">PostGIS</span>
+            <span class="skill-tag data">Python</span>
+            <span class="skill-tag data">SQL</span>
+            <span class="skill-tag data">Pandas</span>
+            <span class="skill-tag data">GeoPandas</span>
+            <span class="skill-tag data">Tableau</span>
+            <span class="skill-tag ai">Google Cloud</span>
+            <span class="skill-tag ai">AWS Bedrock</span>
+            <span class="skill-tag ai">Vertex AI</span>
+            <span class="skill-tag ai">LangChain</span>
+            <span class="skill-tag ai">Gen AI</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">2<span>+</span></div>
+          <div class="stat-label">Years in Data Analytics & GIS</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6<span>+</span></div>
+          <div class="stat-label">Projects Across GIS, ML & Gen AI</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Gen AI Hackathons Competed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Cities Still Left to Map</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section-dark" id="projects">
+  <div class="container">
+    <p class="section-eyebrow">✦ Selected Work</p>
+    <h2 class="section-title">Projects that <em>navigate</em><br>complexity.</h2>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 — Propus AI -->
+      <div class="project-card">
+        <!-- TO ADD VIDEO: replace .video-placeholder with:
+             <div class="project-video">
+               <iframe src="https://drive.google.com/file/d/YOUR_FILE_ID/preview" allowfullscreen allow="autoplay"></iframe>
+             </div>
+        -->
+        <div class="video-placeholder">
+          <div class="play-icon">▶</div>
+          <span>Video coming soon</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">GCP · GTFS · AI Agent</p>
+          <h3 class="project-title">Propus AI — Transit Intelligence Agent</h3>
+          <p class="project-desc">An AI agent connecting Delhi GTFS and OpenStreetMap data to answer real-time transit queries. Built on Cloud Run for the Google APAC Academy.</p>
+          <div class="project-links">
+            <a href="#" class="project-link disabled">↗ Demo</a>
+            <a href="#" class="project-link disabled">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 — Wayfarer AI -->
+      <div class="project-card">
+        <!-- TO ADD VIDEO: replace .video-placeholder with the PiratesOfTheNeuralSeas.mp4 Drive embed -->
+        <div class="video-placeholder">
+          <div class="play-icon">▶</div>
+          <span>Video coming soon</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Streamlit · Vertex AI · GCP · Cloud Run</p>
+          <h3 class="project-title">Wayfarer AI — Smart Travel Booking</h3>
+          <p class="project-desc">Built at the Google GenAI Exchange Hackathon 2025. A conversational AI travel planner that personalises itineraries, compares transport modes, and gives real-time budget-aware recommendations for sustainable travel.</p>
+          <div class="project-links">
+            <a href="https://github.com/stellaephile/wayfarer-AI" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 — What's Up Doc (placeholder name — update if different) -->
+      <div class="project-card">
+        <div class="video-placeholder">
+          <div class="play-icon">▶</div>
+          <span>Video coming soon</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Gen AI · NLP</p>
+          <h3 class="project-title">What's Up Doc</h3>
+          <p class="project-desc">Details coming soon. Add your project description here.</p>
+          <div class="project-links">
+            <a href="#" class="project-link disabled">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 — ASR Transfer Learning -->
+      <div class="project-card">
+        <div class="video-placeholder">
+          <div class="play-icon">▶</div>
+          <span>Project video</span>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Deep Learning · CNN · ANN · IEEE</p>
+          <h3 class="project-title">Automatic Speaker Recognition — Transfer Learning</h3>
+          <p class="project-desc">B.Tech capstone project published in the IEEE Journal. Pioneers ASR using transfer learning on Librivox audiobooks — 200 speakers, 19K spectrogram images for CNN, 28K spectral samples for ANN.</p>
+          <div class="project-links">
+            <a href="https://github.com/sonalgan/ASR-TF" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5 — IndiSpeak -->
+      <div class="project-card">
+        <div class="project-slides">
+          <iframe
+            src="https://drive.google.com/file/d/1BzgvEJ99M7gzGXq7piz_rMZQulAYJNsx/preview"
+            allowfullscreen
+            allow="autoplay"
+            title="IndiSpeak slides">
+          </iframe>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Audio ML · VGGish · Random Forest</p>
+          <h3 class="project-title">IndiSpeak — Multilingual Audio Classification</h3>
+          <p class="project-desc">Classifies audio embeddings into diverse Indian languages using VGGish model extraction and Random Forest classification, with GridSearchCV hyperparameter tuning for precision.</p>
+          <div class="project-links">
+            <a href="https://github.com/sonalgan/IndiSpeak" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
+            <a href="https://drive.google.com/file/d/1BzgvEJ99M7gzGXq7piz_rMZQulAYJNsx/view" target="_blank" rel="noopener" class="project-link">↗ Slides</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 6 — Bhaasha -->
+      <div class="project-card">
+        <div class="project-thumb bhaasha-thumb">
+          <img src="bhaasha-logo.png" alt="Bhaasha logo" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.85;"/>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Deep Learning · Azure · Web App</p>
+          <h3 class="project-title">Bhaasha — Indic Language Detection from Text</h3>
+          <p class="project-desc">Deep learning web app detecting 10 major Indian languages in text with 80%+ accuracy. Trained on MultiIndicMT dataset, with Azure Hyperdrive tuning and ISCII character encoding.</p>
+          <div class="project-links">
+            <a href="https://github.com/sonalgan/bhasha#bhasha-web-app-indic-languages-detection-from-text" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="section-mid" id="writing">
+  <div class="container">
+    <p class="section-eyebrow">✦ Writing</p>
+    <h2 class="section-title">Thinking out <em>loud</em><br>on Medium.</h2>
+    <div class="articles-list">
+
+      <!-- Real article -->
+      <a href="https://medium.com/@sonalgan2000/cricket-unleashed-decoding-the-game-with-data-science-84be034c6f89" target="_blank" rel="noopener" class="article-item">
+        <span class="article-num">01</span>
+        <div class="article-content">
+          <p class="article-tag">Data Science · Sports Analytics</p>
+          <p class="article-title">Cricket Unleashed: Decoding the Game with Data Science</p>
+          <p class="article-meta">Medium · @sonalgan2000</p>
+        </div>
+        <span class="article-arrow">→</span>
+      </a>
+
+      <!-- Placeholder / upcoming articles -->
+      <div class="article-coming">
+        <span class="article-num">02</span>
+        <div>
+          <p class="article-tag">GIS · Urban Data</p>
+          <p class="article-title" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-soft);line-height:1.3;">More articles coming soon</p>
+          <p class="article-meta coming-label">In progress</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Link to Medium profile -->
+    <div style="margin-top: 36px;">
+      <a href="https://medium.com/@sonalgan2000" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block; background: transparent; color: var(--text-mid); border: 1px solid rgba(74,69,96,0.3); font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.22em; padding:13px 32px; text-decoration:none; border-radius:2px; transition:all 0.3s;">
+        ✦ Read on Medium
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect-section" id="connect">
+  <div class="container">
+    <h2 class="connect-title">Let's map something<br>worth building.</h2>
+    <p class="connect-sub">Open to collaborations, roles, and conversations that go somewhere interesting.</p>
+    <div class="connect-links">
+      <a href="mailto:sonalgan01@gmail.com" class="connect-link">✉ Email</a>
+      <!-- Replace # with your actual URLs when ready -->
+      <a href="#" class="connect-link" title="Add your LinkedIn URL">⌥ LinkedIn</a>
+      <a href="#" class="connect-link" title="Add your GitHub URL">⌘ GitHub</a>
+      <a href="https://medium.com/@sonalgan2000" target="_blank" rel="noopener" class="connect-link">✦ Medium</a>
+      <a href="https://drive.google.com/file/d/1-zvCMXN_LfcfzSi_wrV2knEy4DBddGLM/view" target="_blank" rel="noopener" class="connect-link connect-link-resume">↓ Résumé</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">stellaephile</span>
+  <span class="footer-copy">© 2026 · lover of stars, mapper of cities</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Generate stars
+const starsContainer = document.getElementById('stars');
+for (let i = 0; i < 80; i++) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  const size = Math.random() * 2 + 1;
+  star.style.width = size + 'px';
+  star.style.height = size + 'px';
+  star.style.setProperty('--dur', (Math.random() * 4 + 2) + 's');
+  star.style.setProperty('--delay', (Math.random() * 4) + 's');
+  star.style.opacity = Math.random() * 0.6 + 0.1;
+  starsContainer.appendChild(star);
+}
+
+// Nav active highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.style.opacity = a.getAttribute('href') === '#' +
