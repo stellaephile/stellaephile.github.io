@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✨ stellaephile - Sonal Ganvir</title>
-<meta name="description" content="Sonal Ganvir - GIS & Data Analyst specializing in urban transport, spatial intelligence, and Gen AI. Currently at WRI India.">
+<meta name="description" content="Sonal Ganvir - GIS & Data Analyst specializing in urban transport, spatial intelligence, and Gen AI. Currently at WRI India. Open to GIS & data roles in Australia.">
 <meta property="og:title" content="Sonal Ganvir — GIS & Data Analyst">
 <meta property="og:description" content="Spatial intelligence meets data depth. Urban transport, GIS, and Gen AI — currently at WRI India.">
 <meta property="og:type" content="website">
@@ -263,6 +263,34 @@ nav {
 .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-light); }
 .nav-links a:hover::after, .nav-links a.active::after { opacity: 1; }
 
+.nav-links a.nav-resume {
+  opacity: 1;
+  color: var(--gold);
+  border: 1px solid rgba(196,154,108,0.55);
+  border-radius: 2px;
+  padding: 8px 16px;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.nav-links a.nav-resume::after { content: none; }
+.nav-links a.nav-resume:hover {
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  color: var(--void);
+  border-color: transparent;
+  box-shadow: 0 0 16px rgba(224,196,156,0.5);
+}
+
+.mobile-menu a.menu-resume {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  border-radius: 2px;
+  padding: 14px 34px;
+  margin-top: 18px;
+}
+
 /* Hamburger — mobile only */
 .nav-toggle {
   display: none;
@@ -319,10 +347,11 @@ nav {
   transition: color 0.25s;
 }
 .mobile-menu.open a { opacity: 1; transform: translateY(0); }
-.mobile-menu a:nth-child(1) { transition: color 0.25s, opacity 0.5s ease 0.08s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.08s; }
-.mobile-menu a:nth-child(2) { transition: color 0.25s, opacity 0.5s ease 0.16s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.16s; }
-.mobile-menu a:nth-child(3) { transition: color 0.25s, opacity 0.5s ease 0.24s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.24s; }
-.mobile-menu a:nth-child(4) { transition: color 0.25s, opacity 0.5s ease 0.32s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.32s; }
+.mobile-menu a:nth-child(2) { transition: color 0.25s, opacity 0.5s ease 0.08s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.08s; }
+.mobile-menu a:nth-child(3) { transition: color 0.25s, opacity 0.5s ease 0.16s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.16s; }
+.mobile-menu a:nth-child(4) { transition: color 0.25s, opacity 0.5s ease 0.24s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.24s; }
+.mobile-menu a:nth-child(5) { transition: color 0.25s, opacity 0.5s ease 0.32s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.32s; }
+.mobile-menu a:nth-child(6) { transition: color 0.25s, opacity 0.5s ease 0.4s, transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.4s; }
 .mobile-menu a:hover { color: var(--gold-light); }
 
 .mobile-menu .menu-sigil {
@@ -563,26 +592,33 @@ nav {
 }
 
 .btn-resume {
-  padding: 15px 30px;
-  background: transparent;
-  color: var(--gold-light);
+  padding: 15px 34px;
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  color: var(--void);
   font-family: 'Cinzel', serif;
   font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
-  border: 1px solid rgba(196,154,108,0.4);
-  transition: border-color 0.35s, color 0.35s, background 0.35s;
+  border: none;
+  transition: box-shadow 0.35s, filter 0.35s;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  animation: resumeGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes resumeGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(224,196,156,0.25), 0 4px 16px rgba(196,154,108,0.25); }
+  50% { box-shadow: 0 0 24px rgba(224,196,156,0.65), 0 4px 26px rgba(196,154,108,0.45); }
 }
 
 .btn-resume:hover {
-  background: rgba(196,154,108,0.08);
-  border-color: var(--gold);
-  color: var(--gold);
+  filter: brightness(1.08);
+  box-shadow: 0 0 30px rgba(224,196,156,0.8), 0 6px 30px rgba(196,154,108,0.5);
+  animation-play-state: paused;
 }
 
 .hero-scroll {
@@ -1149,13 +1185,20 @@ nav {
 }
 
 .connect-link-resume {
-  border-color: rgba(196,154,108,0.5);
-  color: var(--gold);
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  border-color: transparent;
+  color: var(--void);
+  font-weight: 600;
+  animation: resumeGlow 2.8s ease-in-out infinite;
 }
 
 .connect-link-resume:hover {
-  border-color: var(--gold);
-  color: var(--gold-light);
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold) 100%);
+  border-color: transparent;
+  color: var(--void);
+  filter: brightness(1.08);
+  box-shadow: 0 0 30px rgba(224,196,156,0.8);
+  animation-play-state: paused;
 }
 
 /* ── FOOTER ── */
@@ -1247,6 +1290,7 @@ footer::before {
     <li><a href="#projects">Work</a></li>
     <li><a href="#writing">Writing</a></li>
     <li><a href="#connect">Connect</a></li>
+    <li><a href="https://drive.google.com/file/d/1-zvCMXN_LfcfzSi_wrV2knEy4DBddGLM/view?usp=sharing" target="_blank" rel="noopener" class="nav-resume">↓ Résumé</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
@@ -1259,6 +1303,7 @@ footer::before {
   <a href="#projects">Work</a>
   <a href="#writing">Writing</a>
   <a href="#connect">Connect</a>
+  <a href="https://drive.google.com/file/d/1-zvCMXN_LfcfzSi_wrV2knEy4DBddGLM/view?usp=sharing" target="_blank" rel="noopener" class="menu-resume">↓ Résumé</a>
 </div>
 
 <!-- HERO -->
@@ -1334,7 +1379,7 @@ footer::before {
           <div class="stat-label">Projects Across GIS, ML & Gen AI</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">2</div>
+          <div class="stat-number">3</div>
           <div class="stat-label">Gen AI Hackathons Competed</div>
         </div>
         <div class="stat-card">
@@ -1424,9 +1469,10 @@ footer::before {
         <div class="project-body">
           <p class="project-tag">Deep Learning · CNN · ANN · IEEE</p>
           <h3 class="project-title">Automatic Speaker Recognition - Transfer Learning</h3>
-          <p class="project-desc">B.Tech capstone published in the IEEE Journal. Pioneers ASR using transfer learning on Librivox audiobooks - 200 speakers, 19K spectrogram images for CNN, 28K spectral samples for ANN.</p>
+          <p class="project-desc">B.Tech capstone published at IEEE ICICT 2021. Pioneers ASR using transfer learning on Librivox audiobooks - 200 speakers, 19K spectrogram images for CNN, 28K spectral samples for ANN.</p>
           <div class="project-links">
             <a href="https://github.com/sonalgan/ASR-TF" target="_blank" rel="noopener" class="project-link">↗ GitHub</a>
+            <a href="https://doi.org/10.1109/ICICT50816.2021.9358539" target="_blank" rel="noopener" class="project-link">↗ IEEE Paper</a>
           </div>
         </div>
       </article>
@@ -1487,8 +1533,18 @@ footer::before {
         <span class="article-arrow" aria-hidden="true">→</span>
       </a>
 
-      <a href="https://medium.com/@sonalgan2000/cricket-unleashed-decoding-the-game-with-data-science-84be034c6f89" target="_blank" rel="noopener" class="article-item reveal">
+      <a href="https://doi.org/10.1109/ICICT50816.2021.9358539" target="_blank" rel="noopener" class="article-item reveal">
         <span class="article-num">02</span>
+        <div class="article-content">
+          <p class="article-tag">IEEE ICICT 2021 · Deep Learning · Speech</p>
+          <p class="article-title">Automatic Speaker Recognition using Transfer Learning Approach of Deep Learning Models</p>
+          <p class="article-meta">Co-author with Nidhi Lal · DOI 10.1109/ICICT50816.2021.9358539</p>
+        </div>
+        <span class="article-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="https://medium.com/@sonalgan2000/cricket-unleashed-decoding-the-game-with-data-science-84be034c6f89" target="_blank" rel="noopener" class="article-item reveal">
+        <span class="article-num">03</span>
         <div class="article-content">
           <p class="article-tag">Data Science · Sports Analytics</p>
           <p class="article-title">Cricket Unleashed: Decoding the Game with Data Science</p>
@@ -1498,7 +1554,7 @@ footer::before {
       </a>
 
       <div class="article-coming reveal">
-        <span class="article-num">03</span>
+        <span class="article-num">04</span>
         <div>
           <p class="article-tag">GIS · Urban Data</p>
           <p class="article-title" style="font-size:1.1rem;color:var(--text-soft);">More articles coming soon</p>
@@ -1519,7 +1575,7 @@ footer::before {
   <div class="container">
     <span class="connect-sigil reveal" aria-hidden="true">⋆ ☽ ✦ ☾ ⋆</span>
     <h2 class="connect-title reveal">Let's map something<br>worth building.</h2>
-    <p class="connect-sub reveal">Open to collaborations, roles, and conversations that go somewhere interesting.</p>
+    <p class="connect-sub reveal">Open to GIS &amp; data roles in Australia, collaborations, and conversations that go somewhere interesting.</p>
     <p class="connect-whisper reveal">The best work begins with genuine curiosity - and a little magic.</p>
     <div class="connect-links reveal">
       <a href="mailto:sonalgan01@gmail.com" class="connect-link" data-magnetic>✉ Email</a>
