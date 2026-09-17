@@ -892,66 +892,6 @@ nav {
 
 .project-media img { object-fit: cover; object-position: center; opacity: 0.85; }
 
-.media-facade {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(45,31,74,0.7) 0%, transparent 60%),
-    radial-gradient(ellipse at 75% 80%, rgba(90,21,53,0.4) 0%, transparent 55%),
-    linear-gradient(135deg, #100E1A, #211940);
-  color: var(--linen);
-  font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  overflow: hidden;
-}
-
-.media-facade .play-icon {
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(196,116,140,0.4);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--rose-soft);
-  font-size: 1rem;
-  padding-left: 3px;
-  transition: border-color 0.3s, transform 0.3s, background 0.3s;
-  background: rgba(9,8,15,0.35);
-}
-
-.media-facade:hover .play-icon,
-.project-card:hover .media-facade .play-icon {
-  border-color: rgba(196,116,140,0.8);
-  transform: scale(1.08);
-  background: rgba(196,116,140,0.12);
-}
-
-.media-facade .facade-note {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  opacity: 0.5;
-  text-transform: none;
-}
-
-.media-facade.static {
-  cursor: default;
-  color: var(--mauve);
-}
-
 .project-body { padding: 26px; position: relative; z-index: 2; }
 
 .project-tag {
@@ -1401,19 +1341,15 @@ footer::before {
       <!-- FEATURED 1 - Propus AI -->
       <article class="project-card featured reveal" data-tilt>
         <div class="project-media">
-          <button class="media-facade" data-embed="https://drive.google.com/file/d/1onAGdrTqnXOeNc9zcHUDapvRAClmgj7W/preview" aria-label="Play Propus AI demo video">
-            <div class="play-icon">▶</div>
-            <span>Play demo</span>
-            <span class="facade-note">Loads Google Drive player</span>
-          </button>
+          <iframe src="https://drive.google.com/file/d/1onAGdrTqnXOeNc9zcHUDapvRAClmgj7W/preview" title="Propus AI demo video" loading="lazy" allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="project-body">
           <span class="featured-badge">✦ Featured</span>
-          <p class="project-tag">GCP · GTFS · ADK AI Agent</p>
-          <h3 class="project-title">Propus AI - Transit Intelligence Agent</h3>
-          <p class="project-desc">An AI agent connecting Delhi GTFS and OpenStreetMap data to answer real-time transit queries. Built on Cloud Run for the Google APAC Academy.</p>
+          <p class="project-tag">Agentic AI · GTFS · PostGIS</p>
+          <h3 class="project-title">Propus AI - Transit Intelligence</h3>
+          <p class="project-desc">An AI agent connecting Delhi GTFS and OpenStreetMap data to answer real-time transit queries.</p>
           <div class="project-links">
-            <a href="https://propus-frontend-3928894349.asia-south2.run.app/" target="_blank" rel="noopener" class="project-link">↗ Live Demo</a>
+            <a href="https://propus-ai.vercel.app/" target="_blank" rel="noopener" class="project-link">↗ Live Demo</a>
           </div>
         </div>
       </article>
@@ -1421,11 +1357,7 @@ footer::before {
       <!-- FEATURED 2 - Wayfarer AI -->
       <article class="project-card featured reveal" data-tilt>
         <div class="project-media">
-          <button class="media-facade" data-embed="https://drive.google.com/file/d/1ystZzreK7bQsCaPQIExaUoGTCP3IPayI/preview?quality=720" aria-label="Play Wayfarer AI demo video">
-            <div class="play-icon">▶</div>
-            <span>Play demo</span>
-            <span class="facade-note">Loads Google Drive player</span>
-          </button>
+          <iframe src="https://drive.google.com/file/d/1ystZzreK7bQsCaPQIExaUoGTCP3IPayI/preview?quality=720" title="Wayfarer AI demo video" loading="lazy" allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="project-body">
           <span class="featured-badge">✦ Featured</span>
@@ -1441,11 +1373,7 @@ footer::before {
       <!-- PROJECT 3 - What's Up Doc -->
       <article class="project-card reveal" data-tilt>
         <div class="project-media">
-          <button class="media-facade" data-embed="https://drive.google.com/file/d/1n-asvuqQxwO-JOCK66uIFF00VMir2i67/preview" aria-label="Play What's Up Doc demo video">
-            <div class="play-icon">▶</div>
-            <span>Play demo</span>
-            <span class="facade-note">Loads Google Drive player</span>
-          </button>
+          <iframe src="https://drive.google.com/file/d/1n-asvuqQxwO-JOCK66uIFF00VMir2i67/preview" title="What's Up Doc demo video" loading="lazy" allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="project-body">
           <p class="project-tag">Gen AI · NLP · PostGIS</p>
@@ -1460,11 +1388,7 @@ footer::before {
       <!-- PROJECT 4 - ASR Transfer Learning -->
       <article class="project-card reveal" data-tilt>
         <div class="project-media">
-          <button class="media-facade" data-embed="https://drive.google.com/file/d/1-RNb1jfvNn-h8PE22ldAE0qCmfW_plog/preview" aria-label="Play speaker recognition demo video">
-            <div class="play-icon">▶</div>
-            <span>Play demo</span>
-            <span class="facade-note">Loads Google Drive player</span>
-          </button>
+          <iframe src="https://drive.google.com/file/d/1-RNb1jfvNn-h8PE22ldAE0qCmfW_plog/preview" title="Speaker recognition demo video" loading="lazy" allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="project-body">
           <p class="project-tag">Deep Learning · CNN · ANN · IEEE</p>
@@ -1480,11 +1404,7 @@ footer::before {
       <!-- PROJECT 5 - IndiSpeak -->
       <article class="project-card reveal" data-tilt>
         <div class="project-media">
-          <button class="media-facade" data-embed="https://drive.google.com/file/d/1BzgvEJ99M7gzGXq7piz_rMZQulAYJNsx/preview" aria-label="View IndiSpeak slides">
-            <div class="play-icon">▶</div>
-            <span>View slides</span>
-            <span class="facade-note">Loads Google Drive viewer</span>
-          </button>
+          <iframe src="https://drive.google.com/file/d/1BzgvEJ99M7gzGXq7piz_rMZQulAYJNsx/preview" title="IndiSpeak slides" loading="lazy" allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="project-body">
           <p class="project-tag">Audio ML · VGGish · Random Forest</p>
@@ -1749,21 +1669,6 @@ footer::before {
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     window.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
   })();
-
-  /* ══════════════════════════════════════════
-     CLICK-TO-LOAD MEDIA FACADES
-     (Drive iframes load only on demand)
-  ══════════════════════════════════════════ */
-  document.querySelectorAll('.media-facade[data-embed]').forEach(facade => {
-    facade.addEventListener('click', () => {
-      const iframe = document.createElement('iframe');
-      iframe.src = facade.dataset.embed;
-      iframe.allow = 'autoplay';
-      iframe.allowFullscreen = true;
-      iframe.title = facade.getAttribute('aria-label') || 'Embedded media';
-      facade.replaceWith(iframe);
-    }, { once: true });
-  });
 
   /* ══════════════════════════════════════════
      HERO LETTER CASCADE — split wordmark
